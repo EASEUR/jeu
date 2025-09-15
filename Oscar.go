@@ -1,6 +1,4 @@
 package jeu
-<<<<<<< HEAD
-=======
 
 import (
 	"fmt"
@@ -19,8 +17,7 @@ func clear() {
 	cmd.Stdout = os.Stdout
 	cmd.Run()
 }
-func menu() {
-	var choixmenu int
+func logoontop() {
 	clear()
 	fmt.Println("\n\n\n\n\n")
 	fmt.Println(` /$$   /$$  /$$                                  /$$      
@@ -32,24 +29,41 @@ func menu() {
 | $$  \ $$ |  $$$$/| $$     |  $$$$$$$|  $$$$$$$| $$ \  $$ 
 |__/  |__/  \___/  |__/      \_______/ \_______/|__/  \__/`)
 	fmt.Println("\n\n\n")
-	fmt.Println("Bienvenu sur Xtrack :") // deroulement du menu
-	fmt.Println("Choisissez un des menus ci dessous :")
-	fmt.Println("1- Jouons !")
-	fmt.Println("2- Paramètres")
-	fmt.Println("3- Ouvrir l'inventaire")
-	fmt.Println("4- Quittez")
-	fmt.Println("\n\n\n\n")
-	fmt.Scanln(choixmenu) // choix du menu
-
-	switch choixmenu {
-	case 1:
-		//commencer a jouer
-	case 2:
-		// ouverture des parametres
-	case 3:
-		// ouvrir l'inventaire
-	case 4:
-		// quitte le menu ?
+}
+func menu() {
+	for true {
+		var choixmenu int
+		logoontop()
+		fmt.Println("Bienvenu sur Xtrack :") // deroulement du menu
+		fmt.Println("Choisissez un des menus ci dessous :")
+		fmt.Println("1- Jouons !")
+		fmt.Println("2- Paramètres")
+		fmt.Println("3- Ouvrir l'inventaire")
+		fmt.Println("4- Quittez")
+		fmt.Println("\n\n\n\n")
+		fmt.Scanln(&choixmenu) // choix du menu
+		var sousmenu int
+		switch choixmenu {
+		case 1:
+			//commencer a jouer
+			logoontop()
+			fmt.Println("Etes-vous sûr de bien vouloir rentrer dans le Souk ?") // verification
+			fmt.Println("1- Oui !")
+			fmt.Println("2- Non...")
+			fmt.Println("\n\n\n\n\n\n")
+			fmt.Scanln(&sousmenu) // choix sous menu
+			switch sousmenu {
+			case 1:
+				// continuez
+			case 2:
+				break // sortir
+			}
+		case 2:
+			// ouverture des parametres
+		case 3:
+			// ouvrir l'inventaire
+		case 4:
+			return // fermer prg
+		}
 	}
 }
->>>>>>> e42e54811257f27f297b34aea5d2e7d88f22f190
