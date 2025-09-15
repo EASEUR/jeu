@@ -8,7 +8,7 @@ func InitCharacter(name string, class string, level int, hp int, inventory []str
 		Level:     level,
 		HP:        hp,
 		Power:     50,
-		Gold:      20,
+		Crypto:    20,
 		Inventory: inventory,
 	}
 }
