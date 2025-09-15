@@ -1,4 +1,4 @@
-module go.mod
+module jeu
 
 go 1.25.0
 
