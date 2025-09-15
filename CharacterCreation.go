@@ -9,7 +9,7 @@ type Character struct {
 	Level     int      // Niveau du personnage
 	HP        int      // Points de vie actuels
 	Power     int      // Puissance d'attaque ou compétence
-	Gold      int      // Quantité d'or possédée
+	Crypto    int      // Quantité d'or possédée
 	Inventory []string // Inventaire contenant les objets
 }
 
@@ -47,7 +47,7 @@ func CreateCharacter() Character {
 		Level:     1,
 		HP:        100,
 		Power:     50,
-		Gold:      20,
+		Crypto:    20,
 		Inventory: []string{},
 	}
 
