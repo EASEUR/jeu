@@ -1,6 +1,4 @@
 package jeu
-<<<<<<< HEAD
-=======
 
 import (
 	"fmt"
@@ -52,4 +50,3 @@ func menu() {
 		// quitte le menu ?
 	}
 }
->>>>>>> e42e54811257f27f297b34aea5d2e7d88f22f190

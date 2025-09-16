@@ -1,6 +1,4 @@
 package jeu
-<<<<<<< HEAD
-=======
 
 import "fmt"
 
@@ -84,4 +82,3 @@ func main() {
 		}
 	}
 }
->>>>>>> c48e7539c29684d5d2ce88ce1ec2b912c16b3ad0
