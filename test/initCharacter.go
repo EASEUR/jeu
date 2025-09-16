@@ -1,4 +1,4 @@
-package jeu
+package test
 
 // Nouvelle fonction pour initialiser un personnage avec des valeurs précises
 func InitCharacter(name string, class string, level int, hp int, inventory []string) Character {

@@ -1,8 +1,8 @@
-package jeu
+package menu
 
 import (
 	"fmt"
-	"jeu"
+	"jeu/test"
 	"os"
 	"os/exec"
 	"runtime"
@@ -73,7 +73,7 @@ func clear() {
 	cmd.Stdout = os.Stdout
 	cmd.Run()
 }
-func logoontop() {
+func Logoontop() {
 	clear()
 	fmt.Println("\n\n\n\n\n")
 	fmt.Println(`▀████    ▐████▀     ███        ▄████████    ▄████████  ▄████████    ▄█   ▄█▄ 
@@ -87,9 +87,9 @@ func logoontop() {
                               ███    ███                           ▀         `)
 	fmt.Println("\n\n\n")
 }
-func menu() {
+func Menu() {
 	for true {
-		logoontop()
+		Logoontop()
 		fmt.Println("Bienvenue sur Xtrack :") // deroulement du menu
 		fmt.Println("Choisissez un des menus ci dessous :")
 		fmt.Println("1- Jouons !")
@@ -101,7 +101,7 @@ func menu() {
 		switch choixmenu {
 		case 1:
 			//commencer a jouer
-			logoontop()
+			Logoontop()
 			fmt.Println("Etes-vous sûr de bien vouloir rentrer dans le Souk ?") // verification
 			fmt.Println("1- Oui !")
 			fmt.Println("2- Non...")
@@ -110,20 +110,20 @@ func menu() {
 			switch sousmenu {
 			case 1:
 				Lore()
-				jeu.CharacterCreation()
+				test.CharacterCreation()
 				break // sortir
 			case 2:
 				break // sortir
 			}
 		case 2: // ouverture des parametres
-			logoontop()
+			Logoontop()
 			fmt.Println("Paramètres")
 			fmt.Println("1- Langues")
 			fmt.Println("2- Quitter")
 			fmt.Println("\n\n\n\n\n\n")
 			fmt.Scanln(&sousmenu)
 			// changer la langue mais y'en a qu'une
-			logoontop()
+			Logoontop()
 			fmt.Println("Choisir la langue :")
 			fmt.Println("1- Français")
 			fmt.Println("2- Quitter")
@@ -131,7 +131,7 @@ func menu() {
 			fmt.Scanln(&sousmenu)
 			break
 		case 3:
-			logoontop() // ouvrir l'inventaire
+			Logoontop() // ouvrir l'inventaire
 			fmt.Println("Pourquoi tu veux voir l'inventaire, t'as même pas commencer le jeu, 0/20")
 			fmt.Println("Et pour info y'a rien dans l'inventaire gros nullos")
 			fmt.Println("1- Quitter")

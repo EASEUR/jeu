@@ -1,4 +1,4 @@
-package jeu
+package test
 
 import (
 	"fmt"

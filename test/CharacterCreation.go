@@ -1,6 +1,9 @@
-package jeu
+package test
 
-import "fmt"
+import (
+	"fmt"
+	"jeu/menu"
+)
 
 // Structure représentant un personnage du jeu
 type Character struct {
@@ -15,22 +18,21 @@ type Character struct {
 
 // Fonction pour créer un nouveau personnage via saisie utilisateur
 func CreateCharacter() Character {
-	logoontop()
+	menu.Logoontop()
 	fmt.Println("Bienvenue dans Xtrack")
 	fmt.Print("Entrez le nom de votre personnage :")
 	fmt.Println("\n\n\n\n\n\n\n")
 	var name string
 	fmt.Scanln(&name)
-	logoontop()
+	menu.Logoontop()
 	fmt.Print("Choisissez une classe : Hacker (1), Mercenaire (2), Cyberdoc (3), Ghost (4) : ")
 	fmt.Println("\n\n\n\n\n\n\n\n")
 	var class int
 	fmt.Scanln(&class)
 
-	logoontop()
+	menu.Logoontop()
 	fmt.Println("Personnage créé avec succès !")
 	fmt.Println("\n\n\n\n\n\n\n\n")
-
 
 	var className string
 	switch class {
