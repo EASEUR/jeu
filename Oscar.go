@@ -2,6 +2,7 @@ package jeu
 
 import (
 	"fmt"
+	"jeu"
 	"os"
 	"os/exec"
 	"runtime"
@@ -11,7 +12,8 @@ import (
 var sousmenu int
 var choixmenu int
 
-func Lore() { // explication du lore
+// explication du lore
+func Lore() {
 	logoontop()
 	fmt.Println("-----------------------------------------------------")
 	fmt.Println("Dans une école mystérieuse, réputée pour former")
@@ -108,6 +110,7 @@ func menu() {
 			switch sousmenu {
 			case 1:
 				Lore()
+				jeu.CharacterCreation()
 				break // sortir
 			case 2:
 				break // sortir

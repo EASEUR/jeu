@@ -15,17 +15,22 @@ type Character struct {
 
 // Fonction pour créer un nouveau personnage via saisie utilisateur
 func CreateCharacter() Character {
+	logoontop()
 	fmt.Println("Bienvenue dans Xtrack")
-
 	fmt.Print("Entrez le nom de votre personnage :")
+	fmt.Println("\n\n\n\n\n\n\n")
 	var name string
 	fmt.Scanln(&name)
-
+	logoontop()
 	fmt.Print("Choisissez une classe : Hacker (1), Mercenaire (2), Cyberdoc (3), Ghost (4) : ")
+	fmt.Println("\n\n\n\n\n\n\n\n")
 	var class int
 	fmt.Scanln(&class)
 
+	logoontop()
 	fmt.Println("Personnage créé avec succès !")
+	fmt.Println("\n\n\n\n\n\n\n\n")
+
 
 	var className string
 	switch class {
