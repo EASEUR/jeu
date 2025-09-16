@@ -8,13 +8,13 @@ import (
 	"runtime"
 )
 
+
 // variable
 var sousmenu int
 var choixmenu int
 
-// explication du lore
 func Lore() {
-	logoontop()
+	Logoontop()
 	fmt.Println("-----------------------------------------------------")
 	fmt.Println("Dans une école mystérieuse, réputée pour former")
 	fmt.Println("les plus grands esprits du numérique, chaque élève")
@@ -26,7 +26,7 @@ func Lore() {
 	fmt.Println("1- Continuez")
 	fmt.Println("\n")
 	fmt.Scanln(&sousmenu)
-	logoontop()
+	Logoontop()
 	fmt.Println("-----------------------------------------------------")
 	fmt.Println("Les professeurs, appelés Mentores, ne sont pas de")
 	fmt.Println("simples guides : ce sont des gardiens d’un secret")
@@ -37,7 +37,7 @@ func Lore() {
 	fmt.Println("1- Continuez")
 	fmt.Println("\n\n")
 	fmt.Scanln(&sousmenu)
-	logoontop()
+	Logoontop()
 	fmt.Println("-----------------------------------------------------")
 	fmt.Println("Au cœur de l’établissement, caché dans un couloir oublié,")
 	fmt.Println("se trouve le Labo, une salle interdite dont l’entrée")
@@ -49,7 +49,7 @@ func Lore() {
 	fmt.Println("1- Continuez")
 	fmt.Println("\n")
 	fmt.Scanln(&sousmenu)
-	logoontop()
+	Logoontop()
 	fmt.Println("-----------------------------------------------------")
 	fmt.Println("Avant de pénétrer dans les couloirs de l'École Mystérieuse,")
 	fmt.Println("tu dois révéler qui tu es vraiment.")
@@ -62,8 +62,7 @@ func Lore() {
 	fmt.Println("\n")
 	fmt.Scanln(&sousmenu)
 }
-
-func clear() {
+func Clear() {
 	var cmd *exec.Cmd
 	if runtime.GOOS == "windows" {
 		cmd = exec.Command("cmd", "/c", "cls")
@@ -74,7 +73,7 @@ func clear() {
 	cmd.Run()
 }
 func Logoontop() {
-	clear()
+	Clear()
 	fmt.Println("\n\n\n\n\n")
 	fmt.Println(`▀████    ▐████▀     ███        ▄████████    ▄████████  ▄████████    ▄█   ▄█▄ 
   ███▌   ████▀  ▀█████████▄   ███    ███   ███    ███ ███    ███   ███ ▄███▀ 
@@ -95,8 +94,9 @@ func Menu() {
 		fmt.Println("1- Jouons !")
 		fmt.Println("2- Paramètres")
 		fmt.Println("3- Ouvrir l'inventaire")
-		fmt.Println("4- Quittez")
-		fmt.Println("\n\n\n\n")
+		fmt.Println("4- Crédits")
+		fmt.Println("5- Quittez")
+		fmt.Println("\n\n\n")
 		fmt.Scanln(&choixmenu) // choix du menu
 		switch choixmenu {
 		case 1:
@@ -122,6 +122,9 @@ func Menu() {
 			fmt.Println("2- Quitter")
 			fmt.Println("\n\n\n\n\n\n")
 			fmt.Scanln(&sousmenu)
+			if sousmenu == 2 {
+				break
+			}
 			// changer la langue mais y'en a qu'une
 			Logoontop()
 			fmt.Println("Choisir la langue :")
@@ -140,6 +143,16 @@ func Menu() {
 			break
 
 		case 4:
+			Logoontop()
+			fmt.Println("Fait par :")
+			fmt.Println("1- Oscar V")
+			fmt.Println("2- Florent F")
+			fmt.Println("3- Enzo D-R")
+			fmt.Println("Appuyer sur une touche pour continuer")
+			fmt.Println("\n\n\n\n")
+			fmt.Scanln(&sousmenu)
+		case 5:
+			Clear()
 			return // fermer prg
 		}
 	}

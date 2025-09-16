@@ -1,12 +1,9 @@
 package main
 
 import (
-	"jeu/menu" 	
-	"jeu/test"
+	"jeu/menu"
 )
-
 
 func main() {
 	menu.Menu()
-	test.CreateCharacter()
 }
