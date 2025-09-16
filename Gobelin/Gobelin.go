@@ -13,7 +13,7 @@ type Monster struct {
 func Gobelin() {
 	// Création du Gobelin
 	goblin := Monster{
-		Name:          "Gobelin",
+		Name:          "Zero.exe",
 		MaxHealth:     100,
 		CurrentHealth: 100,
 		AttackPoints:  15,
