@@ -15,7 +15,7 @@ type Personnage struct {
 }
 
 // Fonction pour afficher les informations du personnage
-func displayInfo(p Personnage) {
+func DisplayInfo(p Personnage) {
 	fmt.Println("Informations du personnage :")
 	fmt.Printf("Nom      : %s\n", p.Nom)
 	fmt.Printf("Classe   : %s\n", p.Classe)
