@@ -9,7 +9,7 @@ type Character struct {
 	Level     int      // Niveau du personnage
 	HP        int      // Points de vie actuels
 	Power     int      // Puissance d'attaque ou compétence
-	Crypto    int      // Quantité d'or possédée
+	Crypto    int      // Quantité de Crypto possédée
 	Inventory []string // Inventaire contenant les objets
 }
 

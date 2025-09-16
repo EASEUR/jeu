@@ -1,4 +1,4 @@
-package main
+package test
 
 import (
 	"fmt"
@@ -208,4 +208,10 @@ func MarchandInteraction(c *Character) {
 	c.Inventory = append(c.Inventory, selectedItem)
 	fmt.Printf("Achat réussi : %s ajouté à l’inventaire.\n", selectedItem)
 	fmt.Printf("CryptoCoins restants : %d\n", c.CryptoCoins)
+}
+
+// Point d’entrée du jeu
+func main() {
+	character := CharacterCreation()
+	MarchandInteraction(&character)
 }

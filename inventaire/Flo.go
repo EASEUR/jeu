@@ -1,13 +1,26 @@
-package jeu
+package inventaire
 
-import "fmt"
+import (
+	"fmt"
+	"jeu/menu"
+)
+const MaxInventory = 10
 
-// Type pour représenter un inventaire
 type Inventory map[string]int
+
+// Fonction pour compter le nombre d'items dans l'inventaire (10max)
+func countItems(inv Inventory) int {
+	total := 0
+	for _, qty := range inv {
+		total += qty
+	}
+	return total
+}
 
 // Fonction pour afficher l’inventaire
 func showInventory(inv Inventory) {
-	fmt.Println("=== Inventaire ===")
+	menu.Logoontop()
+	fmt.Println("=$=$=$= Inventaire =$=$=$=")
 	if len(inv) == 0 {
 		fmt.Println("(Vide)")
 		return
@@ -15,11 +28,16 @@ func showInventory(inv Inventory) {
 	for item, qty := range inv {
 		fmt.Printf("- %s (x%d)\n", item, qty)
 	}
+	fmt.Printf("Total : %d/%d items\n", countItems(inv), MaxInventory)
 }
 
-// Fonction pour ajouter un item
-func addInventory(inv Inventory, item string, qty int) {
+// Fonction pour ajouter un item (avec limite)
+func addInventory(inv Inventory, item string, qty int) bool {
+	if countItems(inv)+qty > MaxInventory {
+		return false
+	}
 	inv[item] += qty
+	return true
 }
 
 // Fonction pour retirer un item
@@ -37,9 +55,10 @@ func removeInventory(inv Inventory, item string, qty int) {
 // Parler au Marchand
 func talkToMerchant(inv Inventory) {
 	for {
+		menu.Logoontop()
 		fmt.Println("\n=$=$=$= Marchand =$=$=$=")
-		fmt.Println("1- Acheter une Potion de vie (gratuit)")
-		fmt.Println("2- Vendre (retirer) un item")
+		fmt.Println("1- Acheter une Potion")
+		fmt.Println("2- Retirer un item")
 		fmt.Println("3- Quitter le marchand")
 		fmt.Println("\n\n\n\n\n\n")
 
@@ -48,8 +67,14 @@ func talkToMerchant(inv Inventory) {
 
 		switch choice {
 		case 1:
-			addInventory(inv, "Potion de vie", 1)
-			fmt.Println("Vous avez obtenu : Potion de vie")
+			// Ajouter un item + rappel place dispo inventaire
+			if addInventory(inv, "Potion de vie", 1) {
+				fmt.Println("Vous avez obtenu : Potion de vie")
+			} else {
+				fmt.Println("Inventaire plein ! Vous ne pouvez rien acheter.")
+			}
+			fmt.Printf("Place de l’inventaire : %d/%d\n", countItems(inv), MaxInventory)
+
 		case 2:
 			// Retirer un item (avec inventaire vide)
 			if len(inv) == 0 {
@@ -57,7 +82,7 @@ func talkToMerchant(inv Inventory) {
 				continue
 			}
 
-			// Retirer un item
+			// Retirer un item + rappel place dispo inventaire
 			fmt.Println("Quel item voulez-vous retirer ?")
 			items := make([]string, 0, len(inv))
 			i := 1
@@ -76,6 +101,7 @@ func talkToMerchant(inv Inventory) {
 			} else {
 				fmt.Println("Choix invalide.")
 			}
+			fmt.Printf("Place de l’inventaire : %d/%d\n", countItems(inv), MaxInventory)
 		case 3:
 			fmt.Println("À bientôt !")
 			return
