@@ -7,6 +7,60 @@ import (
 	"runtime"
 )
 
+// variable
+var sousmenu int
+var choixmenu int
+
+func Lore() { // explication du lore
+	logoontop()
+	fmt.Println("-----------------------------------------------------")
+	fmt.Println("Dans une école mystérieuse, réputée pour former")
+	fmt.Println("les plus grands esprits du numérique, chaque élève")
+	fmt.Println("n’est pas simplement là pour apprendre.")
+	fmt.Println()
+	fmt.Println("Ici, l’enseignement est une épreuve, un jeu dangereux")
+	fmt.Println("où seuls les plus débrouillards atteignent le sommet.")
+	fmt.Println("-----------------------------------------------------")
+	fmt.Println("1- Continuez")
+	fmt.Println("\n")
+	fmt.Scanln(&sousmenu)
+	logoontop()
+	fmt.Println("-----------------------------------------------------")
+	fmt.Println("Les professeurs, appelés Mentores, ne sont pas de")
+	fmt.Println("simples guides : ce sont des gardiens d’un secret")
+	fmt.Println("ancestral. Ils détiennent le savoir, mais aussi le")
+	fmt.Println("pouvoir de l’empêcher de se transmettre.")
+	fmt.Println("Leur rôle ? Tester les élèves, parfois jusqu’à l’échec.")
+	fmt.Println("-----------------------------------------------------")
+	fmt.Println("1- Continuez")
+	fmt.Println("\n\n")
+	fmt.Scanln(&sousmenu)
+	logoontop()
+	fmt.Println("-----------------------------------------------------")
+	fmt.Println("Au cœur de l’établissement, caché dans un couloir oublié,")
+	fmt.Println("se trouve le Labo, une salle interdite dont l’entrée")
+	fmt.Println("n’apparaît qu’à ceux qui en sont dignes.")
+	fmt.Println()
+	fmt.Println("On raconte que quiconque parvient à y assembler")
+	fmt.Println("un Ordinateur parfait peut défier les Mentors.")
+	fmt.Println("-----------------------------------------------------")
+	fmt.Println("1- Continuez")
+	fmt.Println("\n")
+	fmt.Scanln(&sousmenu)
+	logoontop()
+	fmt.Println("-----------------------------------------------------")
+	fmt.Println("Avant de pénétrer dans les couloirs de l'École Mystérieuse,")
+	fmt.Println("tu dois révéler qui tu es vraiment.")
+	fmt.Println("Chaque élève possède une histoire, une force et une faiblesse.")
+	fmt.Println("Ta destinée dépendra de l'identité que tu choisis.")
+	fmt.Println()
+	fmt.Println("Prépare-toi à forger ton personnage...")
+	fmt.Println("-----------------------------------------------------")
+	fmt.Println("1- Continuez")
+	fmt.Println("\n")
+	fmt.Scanln(&sousmenu)
+}
+
 func clear() {
 	var cmd *exec.Cmd
 	if runtime.GOOS == "windows" {
@@ -33,9 +87,8 @@ func logoontop() {
 }
 func menu() {
 	for true {
-		var choixmenu int
 		logoontop()
-		fmt.Println("Bienvenu sur Xtrack :") // deroulement du menu
+		fmt.Println("Bienvenue sur Xtrack :") // deroulement du menu
 		fmt.Println("Choisissez un des menus ci dessous :")
 		fmt.Println("1- Jouons !")
 		fmt.Println("2- Paramètres")
@@ -43,7 +96,6 @@ func menu() {
 		fmt.Println("4- Quittez")
 		fmt.Println("\n\n\n\n")
 		fmt.Scanln(&choixmenu) // choix du menu
-		var sousmenu int
 		switch choixmenu {
 		case 1:
 			//commencer a jouer
@@ -55,12 +107,7 @@ func menu() {
 			fmt.Scanln(&sousmenu) // choix sous menu
 			switch sousmenu {
 			case 1:
-				logoontop()
-				fmt.Println("en vrai relou parce que c'est pas fini, reviens dans le menu")
-				fmt.Println("1- Oui")
-				fmt.Println("2- Oui")
-				fmt.Println("\n\n\n\n\n\n")
-				fmt.Scanln(&sousmenu)
+				Lore()
 				break // sortir
 			case 2:
 				break // sortir
