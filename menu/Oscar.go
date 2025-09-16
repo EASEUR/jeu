@@ -59,7 +59,6 @@ func Lore() {
 	fmt.Println("\n")
 	fmt.Scanln(&sousmenu)
 }
-
 func Lore2() {
 	logo.Logoontop()
 	fmt.Println("-----------------------------------------------------")
@@ -123,6 +122,7 @@ func Menu() {
 				Lore()
 				test.CharacterCreation()
 				Lore2()
+
 				break // sortir
 			case 2:
 				break // sortir
@@ -134,7 +134,7 @@ func Menu() {
 			fmt.Println("2- Quitter")
 			fmt.Println("\n\n\n\n\n\n")
 			fmt.Scanln(&sousmenu)
-			if sousmenu == 2 {
+			if sousmenu == 2 { 
 				break
 			}
 			// changer la langue mais y'en a qu'une
