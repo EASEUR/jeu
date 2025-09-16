@@ -2,7 +2,7 @@ package inventaire
 
 import (
 	"fmt"
-	"jeu/menu"
+	"jeu/logo"
 )
 const MaxInventory = 10
 
@@ -19,7 +19,7 @@ func countItems(inv Inventory) int {
 
 // Fonction pour afficher l’inventaire
 func showInventory(inv Inventory) {
-	menu.Logoontop()
+	logo.Logoontop()
 	fmt.Println("=$=$=$= Inventaire =$=$=$=")
 	if len(inv) == 0 {
 		fmt.Println("(Vide)")
@@ -55,7 +55,7 @@ func removeInventory(inv Inventory, item string, qty int) {
 // Parler au Marchand
 func talkToMerchant(inv Inventory) {
 	for {
-		menu.Logoontop()
+		logo.Logoontop()
 		fmt.Println("\n=$=$=$= Marchand =$=$=$=")
 		fmt.Println("1- Acheter une Potion")
 		fmt.Println("2- Retirer un item")

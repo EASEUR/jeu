@@ -2,19 +2,16 @@ package menu
 
 import (
 	"fmt"
+	"jeu/logo"
 	"jeu/test"
-	"os"
-	"os/exec"
-	"runtime"
 )
-
 
 // variable
 var sousmenu int
 var choixmenu int
 
 func Lore() {
-	Logoontop()
+	logo.Logoontop()
 	fmt.Println("-----------------------------------------------------")
 	fmt.Println("Dans une école mystérieuse, réputée pour former")
 	fmt.Println("les plus grands esprits du numérique, chaque élève")
@@ -26,7 +23,7 @@ func Lore() {
 	fmt.Println("1- Continuez")
 	fmt.Println("\n")
 	fmt.Scanln(&sousmenu)
-	Logoontop()
+	logo.Logoontop()
 	fmt.Println("-----------------------------------------------------")
 	fmt.Println("Les professeurs, appelés Mentores, ne sont pas de")
 	fmt.Println("simples guides : ce sont des gardiens d’un secret")
@@ -37,7 +34,7 @@ func Lore() {
 	fmt.Println("1- Continuez")
 	fmt.Println("\n\n")
 	fmt.Scanln(&sousmenu)
-	Logoontop()
+	logo.Logoontop()
 	fmt.Println("-----------------------------------------------------")
 	fmt.Println("Au cœur de l’établissement, caché dans un couloir oublié,")
 	fmt.Println("se trouve le Labo, une salle interdite dont l’entrée")
@@ -49,7 +46,7 @@ func Lore() {
 	fmt.Println("1- Continuez")
 	fmt.Println("\n")
 	fmt.Scanln(&sousmenu)
-	Logoontop()
+	logo.Logoontop()
 	fmt.Println("-----------------------------------------------------")
 	fmt.Println("Avant de pénétrer dans les couloirs de l'École Mystérieuse,")
 	fmt.Println("tu dois révéler qui tu es vraiment.")
@@ -62,33 +59,10 @@ func Lore() {
 	fmt.Println("\n")
 	fmt.Scanln(&sousmenu)
 }
-func Clear() {
-	var cmd *exec.Cmd
-	if runtime.GOOS == "windows" {
-		cmd = exec.Command("cmd", "/c", "cls")
-	} else { // Linux, macOS
-		cmd = exec.Command("clear")
-	}
-	cmd.Stdout = os.Stdout
-	cmd.Run()
-}
-func Logoontop() {
-	Clear()
-	fmt.Println("\n\n\n\n\n")
-	fmt.Println(`▀████    ▐████▀     ███        ▄████████    ▄████████  ▄████████    ▄█   ▄█▄ 
-  ███▌   ████▀  ▀█████████▄   ███    ███   ███    ███ ███    ███   ███ ▄███▀ 
-   ███  ▐███       ▀███▀▀██   ███    ███   ███    ███ ███    █▀    ███▐██▀   
-   ▀███▄███▀        ███   ▀  ▄███▄▄▄▄██▀   ███    ███ ███         ▄█████▀    
-   ████▀██▄         ███     ▀▀███▀▀▀▀▀   ▀███████████ ███        ▀▀█████▄    
-  ▐███  ▀███        ███     ▀███████████   ███    ███ ███    █▄    ███▐██▄   
- ▄███     ███▄      ███       ███    ███   ███    ███ ███    ███   ███ ▀███▄ 
-████       ███▄    ▄████▀     ███    ███   ███    █▀  ████████▀    ███   ▀█▀ 
-                              ███    ███                           ▀         `)
-	fmt.Println("\n\n\n")
-}
+
 func Menu() {
 	for true {
-		Logoontop()
+		logo.Logoontop()
 		fmt.Println("Bienvenue sur Xtrack :") // deroulement du menu
 		fmt.Println("Choisissez un des menus ci dessous :")
 		fmt.Println("1- Jouons !")
@@ -101,7 +75,7 @@ func Menu() {
 		switch choixmenu {
 		case 1:
 			//commencer a jouer
-			Logoontop()
+			logo.Logoontop()
 			fmt.Println("Etes-vous sûr de bien vouloir rentrer dans le Souk ?") // verification
 			fmt.Println("1- Oui !")
 			fmt.Println("2- Non...")
@@ -116,7 +90,7 @@ func Menu() {
 				break // sortir
 			}
 		case 2: // ouverture des parametres
-			Logoontop()
+			logo.Logoontop()
 			fmt.Println("Paramètres")
 			fmt.Println("1- Langues")
 			fmt.Println("2- Quitter")
@@ -126,7 +100,7 @@ func Menu() {
 				break
 			}
 			// changer la langue mais y'en a qu'une
-			Logoontop()
+			logo.Logoontop()
 			fmt.Println("Choisir la langue :")
 			fmt.Println("1- Français")
 			fmt.Println("2- Quitter")
@@ -134,7 +108,7 @@ func Menu() {
 			fmt.Scanln(&sousmenu)
 			break
 		case 3:
-			Logoontop() // ouvrir l'inventaire
+			logo.Logoontop()// ouvrir l'inventaire
 			fmt.Println("Pourquoi tu veux voir l'inventaire, t'as même pas commencer le jeu, 0/20")
 			fmt.Println("Et pour info y'a rien dans l'inventaire gros nullos")
 			fmt.Println("1- Quitter")
@@ -143,7 +117,7 @@ func Menu() {
 			break
 
 		case 4:
-			Logoontop()
+			logo.Logoontop()
 			fmt.Println("Fait par :")
 			fmt.Println("1- Oscar V")
 			fmt.Println("2- Florent F")
@@ -152,7 +126,7 @@ func Menu() {
 			fmt.Println("\n\n\n\n")
 			fmt.Scanln(&sousmenu)
 		case 5:
-			Clear()
+			logo.Clear()
 			return // fermer prg
 		}
 	}

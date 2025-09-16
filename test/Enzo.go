@@ -2,6 +2,7 @@ package test
 
 import (
 	"fmt"
+	"jeu/logo"
 	"strings"
 	"unicode"
 )
@@ -86,11 +87,13 @@ func Init(name, class string) Character {
 
 // Création du personnage avec choix de classe
 func CharacterCreation() Character {
-	fmt.Println("Bienvenue dans Xtrack")
 
+	var buffer int
 	var name string
 	for {
+		logo.Logoontop()
 		fmt.Print("Entrez le nom de votre personnage : ")
+		fmt.Print("\n\n\n\n\n\n\n\n\n")
 		fmt.Scanln(&name)
 		if isValidName(name) {
 			break
@@ -98,8 +101,9 @@ func CharacterCreation() Character {
 		fmt.Println("Erreur : Le nom ne doit contenir que des lettres.")
 	}
 	name = formatName(name)
-
+	logo.Logoontop()
 	fmt.Print("Choisissez une classe : Hacker (1), Mercenaire (2), Cyberdoc (3), Ghost (4) : ")
+	fmt.Print("\n\n\n\n\n\n\n\n\n")
 	var classChoice int
 	fmt.Scanln(&classChoice)
 
@@ -118,6 +122,7 @@ func CharacterCreation() Character {
 	}
 
 	character := Init(name, className)
+	logo.Logoontop()
 	fmt.Println("Personnage créé avec succès !")
 	fmt.Printf("\n--- Détails du personnage ---\n")
 	fmt.Printf("Nom          : %s\n", character.Name)
@@ -128,7 +133,8 @@ func CharacterCreation() Character {
 	fmt.Printf("CryptoCoins  : %d\n", character.CryptoCoins)
 	fmt.Printf("Inventaire   : %v\n", character.Inventory)
 	fmt.Printf("Compétences  : %v\n", character.Skills)
-
+	fmt.Println("1- Continuer")
+	fmt.Scanln(&buffer)
 	return character
 }
 
