@@ -2,7 +2,6 @@ package menu
 
 import (
 	"fmt"
-	"jeu/Gobelin"
 	"jeu/logo"
 	"jeu/mapvg"
 	"jeu/test"
@@ -127,8 +126,6 @@ func Menu() {
 				test.CharacterCreation()
 				Lore2()
 				mapvg.Mapmobile()
-			case 2:
-				break // sortir
 			case 2:
 				break // sortir
 			}

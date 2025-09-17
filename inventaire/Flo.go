@@ -33,19 +33,19 @@ func ShowInventory(p1, p2, p3, ppc bool) {
 	// 	fmt.Printf("- %s (x%d)\n", item, qty)
 	// }
 	if p1 {
-		fmt.Println("Carte mère")
+		fmt.Println("\033[34mCarte mère\033[0m")
 		total++
 	}
 	if p2 {
-		fmt.Println("Processeur")
+		fmt.Println("\033[34mProcesseur\033[0m")
 		total++
 	}
 	if p3 {
-		fmt.Println("Carte Graphique")
+		fmt.Println("\033[34mCarte Graphique\033[0m")
 		total++
 	}
 	if ppc {
-		fmt.Println("PC assemblé")
+		fmt.Println("\033[34mPC assemblé\033[0m")
 		total++
 	}
 	if p1 != true {
