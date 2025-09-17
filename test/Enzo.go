@@ -1,24 +1,27 @@
-package main
+package test
 
 import (
 	"fmt"
+	"jeu/logo"
 	"strings"
 	"unicode"
 )
 
-// Structure représentant un personnage du jeu
+// Structure qui représente le personne créé
 type Character struct {
-	Name        string
-	Class       string
-	Level       int
-	HP          int
-	Power       int
-	CryptoCoins int
-	Inventory   []string
-	Skills      []string
+	Name         string
+	Class        string
+	Level        int
+	HP           int
+	Power        int
+	CryptoCoins  int
+	Inventory    []string
+	Skills       []string
+	Experience   int
+	NextLevelExp int
 }
 
-// Vérifie que le nom contient uniquement des lettres
+// Cette func vérifie si les nom choisie contient suelement des lettres
 func isValidName(name string) bool {
 	for _, r := range name {
 		if !unicode.IsLetter(r) {
@@ -28,7 +31,7 @@ func isValidName(name string) bool {
 	return true
 }
 
-// Formate le nom : première lettre en majuscule, le reste en minuscules
+// Cette func permet obligatoirement de mettre le nom crée avec la première lettre en majuscule et le reste en minuscule. ex : Ghost
 func formatName(name string) string {
 	name = strings.ToLower(name)
 	return strings.Title(name)
@@ -73,24 +76,28 @@ func Init(name, class string) Character {
 	}
 
 	return Character{
-		Name:        name,
-		Class:       class,
-		Level:       1,
-		HP:          hp,
-		Power:       power,
-		CryptoCoins: cryptoCoins,
-		Inventory:   inventory,
-		Skills:      skills,
+		Name:         name,
+		Class:        class,
+		Level:        1,
+		HP:           hp,
+		Power:        power,
+		CryptoCoins:  cryptoCoins,
+		Inventory:    inventory,
+		Skills:       skills,
+		Experience:   0,
+		NextLevelExp: 100,
 	}
 }
 
-// Création du personnage avec choix de classe
+// Cette func permet de créer son personnage et de choisir sa classe pour l'Aventure
 func CharacterCreation() Character {
-	fmt.Println("Bienvenue dans Xtrack")
 
+	var buffer int
 	var name string
 	for {
+		logo.Logoontop()
 		fmt.Print("Entrez le nom de votre personnage : ")
+		fmt.Print("\n\n\n\n\n\n\n\n\n")
 		fmt.Scanln(&name)
 		if isValidName(name) {
 			break
@@ -98,8 +105,9 @@ func CharacterCreation() Character {
 		fmt.Println("Erreur : Le nom ne doit contenir que des lettres.")
 	}
 	name = formatName(name)
-
+	logo.Logoontop()
 	fmt.Print("Choisissez une classe : Hacker (1), Mercenaire (2), Cyberdoc (3), Ghost (4) : ")
+	fmt.Print("\n\n\n\n\n\n\n\n\n")
 	var classChoice int
 	fmt.Scanln(&classChoice)
 
@@ -118,6 +126,7 @@ func CharacterCreation() Character {
 	}
 
 	character := Init(name, className)
+	logo.Logoontop()
 	fmt.Println("Personnage créé avec succès !")
 	fmt.Printf("\n--- Détails du personnage ---\n")
 	fmt.Printf("Nom          : %s\n", character.Name)
@@ -128,11 +137,13 @@ func CharacterCreation() Character {
 	fmt.Printf("CryptoCoins  : %d\n", character.CryptoCoins)
 	fmt.Printf("Inventaire   : %v\n", character.Inventory)
 	fmt.Printf("Compétences  : %v\n", character.Skills)
-
+	fmt.Printf("XP           : %d/%d\n", character.Experience, character.NextLevelExp)
+	fmt.Println("1- Continuer")
+	fmt.Scanln(&buffer)
 	return character
 }
 
-// Objets disponibles chez le marchand selon la classe
+// Cette fonction permet d'afficher les compétences propre à chaque classe
 func GetMarchandItems(class string) map[string]int {
 	switch class {
 	case "Hacker":
@@ -168,7 +179,7 @@ func GetMarchandItems(class string) map[string]int {
 	}
 }
 
-// Interaction avec le marchand : achat d’objets
+// Cette func permet d'intéragir avec le marchand et d'acheter les items
 func MarchandInteraction(c *Character) {
 	items := GetMarchandItems(c.Class)
 
@@ -208,10 +219,4 @@ func MarchandInteraction(c *Character) {
 	c.Inventory = append(c.Inventory, selectedItem)
 	fmt.Printf("Achat réussi : %s ajouté à l’inventaire.\n", selectedItem)
 	fmt.Printf("CryptoCoins restants : %d\n", c.CryptoCoins)
-}
-
-// Point d’entrée du jeu
-func main() {
-	character := CharacterCreation()
-	MarchandInteraction(&character)
 }
