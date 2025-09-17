@@ -6,6 +6,7 @@ import (
 	"jeu/logo"
 	"math/rand"
 	"time"
+	"jeu/CombatGobelin"
 )
 
 func creapc() bool {
@@ -63,7 +64,7 @@ func eprv2() bool {
 	resultat := (n1 * n2) / n3
 
 	logo.Logoontop()
-	fmt.Println("\033[1mVous êtes arrivé à la première épreuve\033[0m")
+	fmt.Println("\033[1mVous êtes arrivé à la deuxième épreuve\033[0m")
 	fmt.Println("Voici le petit calcul à résoudre :")
 	fmt.Printf("(%d * %d) / %d = ? ", n1, n2, n3)
 	fmt.Println("\n\n\n\n\n\n\n")
@@ -78,7 +79,16 @@ func eprv2() bool {
 	}
 	return true
 }
-
+func eprv3() bool {
+	var buff string
+	logo.Logoontop()
+	fmt.Println("\033[1mVous êtes arrivé à la troisième épreuve\033[0m")
+	fmt.Println("1- Continuez")
+	fmt.Println("\n\n\n\n\n\n\n\n")
+	fmt.Scanln(&buff)
+	CombatGobelin.CombatInteractif()
+	return true
+}
 func piece1() bool {
 	var buff string
 	eprv1()
@@ -101,11 +111,13 @@ func piece2() bool {
 }
 func piece3() bool {
 	var buff string
+	eprv3()
 	logo.Logoontop()
 	fmt.Println("Vous avez trouvé la 3eme piece gg wp")
 	fmt.Println("1- Continuez")
 	fmt.Println("\n\n\n\n\n\n\n\n")
 	fmt.Scanln(&buff)
+	
 	return true
 }
 

@@ -22,7 +22,8 @@ func InitCombatGobelin() Gobelin {
 }
 
 // Func du combat entre le joueur et le monstre. Elle met en place un combat Tour par Tour avec des possbilités d'utiliser les compétences, les attaques basique etc
-func CombatInteractif(c *test.Character) {
+func CombatInteractif() {
+	c := test.Player
 	gobelin := InitCombatGobelin()
 	fmt.Printf("\n🔥 Combat contre %s lancé !\n", gobelin.Name)
 

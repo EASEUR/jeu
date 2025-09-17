@@ -8,6 +8,8 @@ import (
 )
 
 // Structure qui représente le personne créé
+var Player *Character
+
 type Character struct {
 	Name         string
 	Class        string
@@ -20,6 +22,7 @@ type Character struct {
 	Experience   int
 	NextLevelExp int
 }
+
 
 // Cette func vérifie si les nom choisie contient suelement des lettres
 func isValidName(name string) bool {
