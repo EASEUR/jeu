@@ -47,26 +47,18 @@ func Init(name, class string) Character {
 		hp = 80
 		power = 60
 		cryptoCoins = 100
-		inventory = []string{"Laptop", "VPN", "Exploit Kit"}
-		skills = []string{"Piratage", "Analyse réseau", "Injection SQL"}
 	case "Mercenaire":
 		hp = 120
 		power = 80
 		cryptoCoins = 50
-		inventory = []string{"Fusil", "Armure légère", "Grenade"}
-		skills = []string{"Combat rapproché", "Tir de précision", "Intimidation"}
 	case "Cyberdoc":
 		hp = 100
 		power = 40
 		cryptoCoins = 70
-		inventory = []string{"Kit médical", "Neuro-scanner", "Stimulant"}
-		skills = []string{"Soins", "Implants", "Analyse biologique"}
 	case "Ghost":
 		hp = 90
 		power = 70
 		cryptoCoins = 80
-		inventory = []string{"Camouflage", "Drone espion", "Silencieux"}
-		skills = []string{"Infiltration", "Discrétion", "Sabotage"}
 	default:
 		hp = 100
 		power = 50
