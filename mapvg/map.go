@@ -7,6 +7,33 @@ import (
 	"time"
 )
 
+func creapc() bool {
+	var saisis int
+	logo.Logoontop()
+	fmt.Println("\033[1mVous êtes arrivé dans le labo, un homme vous parle :\033[0m")
+	fmt.Println("\033[3mQue me voulez vous ?\033[0m")
+	fmt.Println("1- Construire le PC")
+	fmt.Println("2- Partir en courant")
+	fmt.Println("\n\n\n\n\n\n\n\n")
+	fmt.Scanln(&saisis)
+	if saisis == 1 {
+		logo.Logoontop()
+		fmt.Println("\033[3mAvez vous récuperé les 3 pièces du PC à obtenir ?\033[0m")
+		fmt.Println("1- Oui")
+		fmt.Println("\n\n\n\n\n\n\n\n\n\n")
+		fmt.Scanln(&saisis)
+		logo.Logoontop()
+		fmt.Println("\033[3mVoici le PC monté et prêt à être utilisé\nBonne chance pour la suite des épreuves !\033[0m")
+		fmt.Println("1- Continuez")
+		fmt.Println("\n\n\n\n\n\n\n\n\n\n")
+		fmt.Scanln(&saisis)
+
+		return true
+	} else {
+		return false
+	}
+}
+
 func eprv1() bool {
 	var r1 int
 	logo.Logoontop()
@@ -82,16 +109,18 @@ func piece3() bool {
 }
 
 func Mapmobile() {
+	var obtpc bool
 	var choix string
 	var buff string
 	var piecen1 bool
 	var piecen2 bool
 	var piecen3 bool
+	var lore bool
 
 	i := 2 // hauter
 	j := 0 // largeur
-	hauteur_max := 5
-	largeur_max := 5
+	hauteur_max := 9
+	largeur_max := 9
 	for {
 		logo.Logoontop()
 		fmt.Printf("Vous vous trouvez actuellement à la case '%d' (hauteur) ; '%d' (largeur)\nQuelle action voulez-vous faire :\n", i, j)
@@ -172,15 +201,37 @@ func Mapmobile() {
 
 		case "I":
 			// ouvrir inventaire
+		case "DEV":
+			piecen1 = true
+			piecen2 = true
+			piecen3 = true
 		}
+
 		if i == 0 && j == 0 && !piecen1 {
 			piecen1 = piece1()
 		}
-		if i == 2 && j == 2 && !piecen2 {
+		if i == 4 && j == 6 && !piecen2 {
 			piecen2 = piece2()
 		}
-		if i == 5 && j == 5 && !piecen3 {
+		if i == 9 && j == 9 && !piecen3 {
 			piecen3 = piece3()
+		}
+		if piecen1 && piecen2 && piecen3 {
+			if !lore {
+				logo.Logoontop()
+				fmt.Println("Vous avez réussi à réunir les 3 pièces du PC")
+				fmt.Println("Vous devez vous rendre au labo, il se situe à '1' '1'")
+				fmt.Println("1 -Continuez")
+				fmt.Println("\n\n\n\n\n\n\n")
+				fmt.Scanln(&buff)
+				lore = true
+			}
+			if i == 1 && j == 1 && lore {
+				obtpc = creapc()
+			}
+		}
+		if obtpc {
+
 		}
 
 	}
