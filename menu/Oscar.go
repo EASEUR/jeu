@@ -132,7 +132,7 @@ func Menu() {
 			}
 		case 2: // ouverture des parametres
 			logo.Logoontop()
-			fmt.Println("\033[1mEParametres :\033[0m")
+			fmt.Println("\033[1mParametres :\033[0m")
 			fmt.Println("1- Langues")
 			fmt.Println("2- Quitter")
 			fmt.Println("\n\n\n\n\n\n")
