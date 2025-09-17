@@ -99,7 +99,7 @@ func Lore2() {
 	fmt.Scanln(&buff1)
 }
 func Menu() {
-	for true {
+	for {
 		logo.Logoontop()
 		fmt.Println("\033[1mBienvenue sur Xtrack :\033[0m") // deroulement du menu
 		fmt.Println("\033[3mPetit conseil, restez en CapsLock (ver Maj) durant le jeu :3\033[0m")
