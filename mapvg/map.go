@@ -2,6 +2,7 @@ package mapvg
 
 import (
 	"fmt"
+	"jeu/inventaire"
 	"jeu/logo"
 	"math/rand"
 	"time"
@@ -116,6 +117,9 @@ func Mapmobile() {
 	var piecen2 bool
 	var piecen3 bool
 	var lore bool
+	var obtp1 bool
+	var obtp2 bool
+	var obtp3 bool
 
 	i := 2 // hauter
 	j := 0 // largeur
@@ -200,21 +204,44 @@ func Mapmobile() {
 			}
 
 		case "I":
+			logo.Logoontop()
+			fmt.Println("\n=$=$=$= Menu Inventaire =$=$=$=")
+			fmt.Println("1- Voir les items")
+			fmt.Println("2- Parler au marchand")
+			fmt.Println("3- Quitter l’inventaire")
+			fmt.Println("\n\n\n\n\n\n")
+
+			var choice int
+			fmt.Scanln(&choice)
+
+			switch choice {
+			case 1:
+				inventaire.ShowInventory(obtp1, obtp2, obtp3, obtpc)
+			case 2:
+				//talkToMerchant()
+			case 3:
+			}
 			// ouvrir inventaire
 		case "DEV":
 			piecen1 = true
 			piecen2 = true
 			piecen3 = true
+			obtp1 = true
+			obtp2 = true
+			obtp3 = true
 		}
 
 		if i == 0 && j == 0 && !piecen1 {
 			piecen1 = piece1()
+			obtp1 = true
 		}
 		if i == 4 && j == 6 && !piecen2 {
 			piecen2 = piece2()
+			obtp2 = true
 		}
 		if i == 9 && j == 9 && !piecen3 {
 			piecen3 = piece3()
+			obtp3 = true
 		}
 		if piecen1 && piecen2 && piecen3 {
 			if !lore {
@@ -228,11 +255,13 @@ func Mapmobile() {
 			}
 			if i == 1 && j == 1 && lore {
 				obtpc = creapc()
+
 			}
 		}
 		if obtpc {
-
+			obtp3 = false
+			obtp2 = false
+			obtp1 = false
 		}
-
 	}
 }

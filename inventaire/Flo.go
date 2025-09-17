@@ -4,12 +4,13 @@ import (
 	"fmt"
 	"jeu/logo"
 )
+
 const MaxInventory = 10
 
 type Inventory map[string]int
 
 // Fonction pour compter le nombre d'items dans l'inventaire (10max)
-func countItems(inv Inventory) int {
+func CountItems(inv Inventory) int {
 	total := 0
 	for _, qty := range inv {
 		total += qty
@@ -18,22 +19,59 @@ func countItems(inv Inventory) int {
 }
 
 // Fonction pour afficher l’inventaire
-func showInventory(inv Inventory) {
+func ShowInventory(p1, p2, p3, ppc bool) {
+	var buff string
+	var total int
+	var inv Inventory = make(map[string]int)
 	logo.Logoontop()
 	fmt.Println("=$=$=$= Inventaire =$=$=$=")
-	if len(inv) == 0 {
-		fmt.Println("(Vide)")
-		return
+	// if len(inv) == 0 {
+	// 	fmt.Println("(Vide)")
+	// 	return
+	// }
+	// for item, qty := range inv {
+	// 	fmt.Printf("- %s (x%d)\n", item, qty)
+	// }
+	if p1 {
+		fmt.Println("Carte mère")
+		total++
 	}
-	for item, qty := range inv {
-		fmt.Printf("- %s (x%d)\n", item, qty)
+	if p2 {
+		fmt.Println("Processeur")
+		total++
 	}
-	fmt.Printf("Total : %d/%d items\n", countItems(inv), MaxInventory)
+	if p3 {
+		fmt.Println("Carte Graphique")
+		total++
+	}
+	if ppc {
+		fmt.Println("PC assemblé")
+		total++
+	}
+	if p1 != true {
+		fmt.Println("")
+	}
+	if p2 != true {
+		fmt.Println("")
+	}
+	if p3 != true {
+		fmt.Println("")
+	}
+	if ppc != true {
+		fmt.Println("")
+	}
+	total += CountItems(inv)
+	fmt.Printf("Total : %d/%d items\n", total, MaxInventory)
+	fmt.Println("1 - Retour au jeu")
+	fmt.Println("\n\n\n\n")
+
+	fmt.Scanln(&buff)
+
 }
 
 // Fonction pour ajouter un item (avec limite)
 func addInventory(inv Inventory, item string, qty int) bool {
-	if countItems(inv)+qty > MaxInventory {
+	if CountItems(inv)+qty > MaxInventory {
 		return false
 	}
 	inv[item] += qty
@@ -73,7 +111,7 @@ func talkToMerchant(inv Inventory) {
 			} else {
 				fmt.Println("Inventaire plein ! Vous ne pouvez rien acheter.")
 			}
-			fmt.Printf("Place de l’inventaire : %d/%d\n", countItems(inv), MaxInventory)
+			fmt.Printf("Place de l’inventaire : %d/%d\n", CountItems(inv), MaxInventory)
 
 		case 2:
 			// Retirer un item (avec inventaire vide)
@@ -101,7 +139,7 @@ func talkToMerchant(inv Inventory) {
 			} else {
 				fmt.Println("Choix invalide.")
 			}
-			fmt.Printf("Place de l’inventaire : %d/%d\n", countItems(inv), MaxInventory)
+			fmt.Printf("Place de l’inventaire : %d/%d\n", CountItems(inv), MaxInventory)
 		case 3:
 			fmt.Println("À bientôt !")
 			return
@@ -112,27 +150,24 @@ func talkToMerchant(inv Inventory) {
 }
 
 // Menu Iventaire
-func AccessInventory(inv Inventory) {
-	for {
-		fmt.Println("\n=$=$=$= Menu Inventaire =$=$=$=")
-		fmt.Println("1- Voir les items")
-		fmt.Println("2- Parler au marchand")
-		fmt.Println("3- Quitter l’inventaire")
-		fmt.Println("\n\n\n\n\n\n")
+// func AccessInventory(inv Inventory) {
+// 	for {
+// 		fmt.Println("\n=$=$=$= Menu Inventaire =$=$=$=")
+// 		fmt.Println("1- Voir les items")
+// 		fmt.Println("2- Parler au marchand")
+// 		fmt.Println("3- Quitter l’inventaire")
+// 		fmt.Println("\n\n\n\n\n\n")
 
-		var choice int
-		fmt.Scanln(&choice)
+// 		var choice int
+// 		fmt.Scanln(&choice)
 
-		switch choice {
-		case 1:
-			showInventory(inv)
-		case 2:
-			talkToMerchant(inv)
-		case 3:
-			fmt.Println("Vous quittez l’inventaire.")
-			return
-		default:
-			fmt.Println("Choix invalide.")
-		}
-	}
-}
+// 		switch choice {
+// 		case 1:
+// 			ShowInventory(inv)
+// 		case 2:
+// 			talkToMerchant(inv)
+// 		case 3:
+// 			fmt.Println("Vous quittez l’inventaire.")
+// 			return
+// 		default:
+// 			fmt.Println("Choix invalide.")
