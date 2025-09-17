@@ -60,6 +60,43 @@ func Lore() {
 	fmt.Scanln(&sousmenu)
 }
 
+func Lore2() {
+	logo.Logoontop()
+	fmt.Println("-----------------------------------------------------")
+	fmt.Println("Ton esprit s'éveille dans une salle plongée dans l'obscurité.")
+	fmt.Println("Un grincement résonne... puis une porte s'ouvre lentement.")
+	fmt.Println("Tu viens d’être libéré dans la cour principale de l’École Mystérieuse.")
+	fmt.Println("Devant toi s’étend une immense carte labyrinthique :")
+	fmt.Println("salles de classe abandonnées, bibliothèque silencieuse, gymnase poussiéreux,")
+	fmt.Println("et des couloirs qui semblent n’avoir ni début ni fin.")
+	fmt.Println("-----------------------------------------------------")
+	fmt.Println("1- Continuez")
+	fmt.Println("\n")
+	fmt.Scanln(&sousmenu)
+	logo.Logoontop()
+	fmt.Println("-----------------------------------------------------")
+	fmt.Println("Ton objectif est clair :")
+	fmt.Println("   → Retrouver les 3 pièces essentielles pour assembler ton premier PC.")
+	fmt.Println("   Ces fragments sont dispersés et jalousement protégés :")
+	fmt.Println("      1. La Carte Mère, symbole du contrôle.")
+	fmt.Println("      2. Le Processeur, cœur de l’intelligence.")
+	fmt.Println("      3. La Carte Graphique, clé de la vision.")
+	fmt.Println("-----------------------------------------------------")
+	fmt.Println("1- Continuez")
+	fmt.Println("\n")
+	fmt.Scanln(&sousmenu)
+	logo.Logoontop()
+	fmt.Println("-----------------------------------------------------")
+	fmt.Println("Une fois réunies, il te faudra atteindre le Labo,")
+	fmt.Println("le seul lieu capable d’assembler ces fragments en une machine parfaite.")
+	fmt.Println("Prépare-toi, élève.")
+	fmt.Println("Chaque pas que tu feras dans cette école te rapprochera du pouvoir...")
+	fmt.Println("ou de ta perte.")
+	fmt.Println("-----------------------------------------------------")
+	fmt.Println("1 - Continuer dans la map")
+	fmt.Println("\n\n")
+	fmt.Scanln(&sousmenu)
+}
 func Menu() {
 	for true {
 		logo.Logoontop()
@@ -85,6 +122,7 @@ func Menu() {
 			case 1:
 				Lore()
 				test.CharacterCreation()
+				Lore2()
 				break // sortir
 			case 2:
 				break // sortir
@@ -108,7 +146,7 @@ func Menu() {
 			fmt.Scanln(&sousmenu)
 			break
 		case 3:
-			logo.Logoontop()// ouvrir l'inventaire
+			logo.Logoontop() // ouvrir l'inventaire
 			fmt.Println("Pourquoi tu veux voir l'inventaire, t'as même pas commencer le jeu, 0/20")
 			fmt.Println("Et pour info y'a rien dans l'inventaire gros nullos")
 			fmt.Println("1- Quitter")
@@ -128,9 +166,6 @@ func Menu() {
 		case 5:
 			logo.Clear()
 			return // fermer prg
-
-			
-
 		}
 	}
 }
