@@ -218,7 +218,7 @@ func Mapmobile() {
 			case 1:
 				inventaire.ShowInventory(obtp1, obtp2, obtp3, obtpc)
 			case 2:
-				//talkToMerchant()
+				inventaire.TalkToMerchant()
 			case 3:
 			}
 			// ouvrir inventaire
