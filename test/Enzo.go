@@ -37,7 +37,7 @@ func formatName(name string) string {
 	return strings.Title(name)
 }
 
-// Initialise le personnage selon sa classe
+// Initialise le personnage selon sa classe, ses compétences et son inventaire
 func Init(name, class string) Character {
 	var hp, power, cryptoCoins int
 	var inventory, skills []string
