@@ -3,12 +3,14 @@ package menu
 import (
 	"fmt"
 	"jeu/logo"
+	"jeu/mapvg"
 	"jeu/test"
 )
 
 // variable
 var sousmenu int
 var choixmenu int
+var buff1 string
 
 func Lore() {
 	logo.Logoontop()
@@ -22,7 +24,7 @@ func Lore() {
 	fmt.Println("-----------------------------------------------------")
 	fmt.Println("1- Continuez")
 	fmt.Println("\n")
-	fmt.Scanln(&sousmenu)
+	fmt.Scanln(&buff1)
 	logo.Logoontop()
 	fmt.Println("-----------------------------------------------------")
 	fmt.Println("Les professeurs, appelés Mentores, ne sont pas de")
@@ -33,7 +35,7 @@ func Lore() {
 	fmt.Println("-----------------------------------------------------")
 	fmt.Println("1- Continuez")
 	fmt.Println("\n\n")
-	fmt.Scanln(&sousmenu)
+	fmt.Scanln(&buff1)
 	logo.Logoontop()
 	fmt.Println("-----------------------------------------------------")
 	fmt.Println("Au cœur de l’établissement, caché dans un couloir oublié,")
@@ -45,7 +47,7 @@ func Lore() {
 	fmt.Println("-----------------------------------------------------")
 	fmt.Println("1- Continuez")
 	fmt.Println("\n")
-	fmt.Scanln(&sousmenu)
+	fmt.Scanln(&buff1)
 	logo.Logoontop()
 	fmt.Println("-----------------------------------------------------")
 	fmt.Println("Avant de pénétrer dans les couloirs de l'École Mystérieuse,")
@@ -57,9 +59,8 @@ func Lore() {
 	fmt.Println("-----------------------------------------------------")
 	fmt.Println("1- Continuez")
 	fmt.Println("\n")
-	fmt.Scanln(&sousmenu)
+	fmt.Scanln(&buff1)
 }
-
 func Lore2() {
 	logo.Logoontop()
 	fmt.Println("-----------------------------------------------------")
@@ -72,7 +73,7 @@ func Lore2() {
 	fmt.Println("-----------------------------------------------------")
 	fmt.Println("1- Continuez")
 	fmt.Println("\n")
-	fmt.Scanln(&sousmenu)
+	fmt.Scanln(&buff1)
 	logo.Logoontop()
 	fmt.Println("-----------------------------------------------------")
 	fmt.Println("Ton objectif est clair :")
@@ -84,7 +85,7 @@ func Lore2() {
 	fmt.Println("-----------------------------------------------------")
 	fmt.Println("1- Continuez")
 	fmt.Println("\n")
-	fmt.Scanln(&sousmenu)
+	fmt.Scanln(&buff1)
 	logo.Logoontop()
 	fmt.Println("-----------------------------------------------------")
 	fmt.Println("Une fois réunies, il te faudra atteindre le Labo,")
@@ -95,41 +96,43 @@ func Lore2() {
 	fmt.Println("-----------------------------------------------------")
 	fmt.Println("1 - Continuer dans la map")
 	fmt.Println("\n\n")
-	fmt.Scanln(&sousmenu)
+	fmt.Scanln(&buff1)
 }
 func Menu() {
 	for true {
 		logo.Logoontop()
-		fmt.Println("Bienvenue sur Xtrack :") // deroulement du menu
-		fmt.Println("Choisissez un des menus ci dessous :")
+		fmt.Println("\033[1mBienvenue sur Xtrack :\033[0m") // deroulement du menu
+		fmt.Println("\033[3mPetit conseil, restez en CapsLock durant le jeu :3\033[0m")
+		fmt.Println("\033[1mChoisissez un des menus ci dessous :\033[0m")
 		fmt.Println("1- Jouons !")
 		fmt.Println("2- Paramètres")
 		fmt.Println("3- Ouvrir l'inventaire")
 		fmt.Println("4- Crédits")
 		fmt.Println("5- Quittez")
-		fmt.Println("\n\n\n")
+		fmt.Println("\n\n")
 		fmt.Scanln(&choixmenu) // choix du menu
 		switch choixmenu {
 		case 1:
 			//commencer a jouer
 			logo.Logoontop()
-			fmt.Println("Etes-vous sûr de bien vouloir rentrer dans le Souk ?") // verification
+			fmt.Println("\033[1mEtes-vous sûr de bien vouloir rentrer dans le Souk ?\033[0m") // verification
 			fmt.Println("1- Oui !")
 			fmt.Println("2- Non...")
-			fmt.Println("\n\n\n\n\n\n")
+			fmt.Println("\n\n\n\n\n\n\n")
 			fmt.Scanln(&sousmenu) // choix sous menu
 			switch sousmenu {
 			case 1:
 				Lore()
 				test.CharacterCreation()
 				Lore2()
+				mapvg.Mapmobile()
 				break // sortir
 			case 2:
 				break // sortir
 			}
 		case 2: // ouverture des parametres
 			logo.Logoontop()
-			fmt.Println("Paramètres")
+			fmt.Println("\033[1mParametres :\033[0m")
 			fmt.Println("1- Langues")
 			fmt.Println("2- Quitter")
 			fmt.Println("\n\n\n\n\n\n")
@@ -139,11 +142,11 @@ func Menu() {
 			}
 			// changer la langue mais y'en a qu'une
 			logo.Logoontop()
-			fmt.Println("Choisir la langue :")
+			fmt.Println("\033[1mChoisir la langue :\033[0m")
 			fmt.Println("1- Français")
 			fmt.Println("2- Quitter")
 			fmt.Println("\n\n\n\n\n\n")
-			fmt.Scanln(&sousmenu)
+			fmt.Scanln(&buff1)
 			break
 		case 3:
 			logo.Logoontop() // ouvrir l'inventaire
@@ -151,21 +154,42 @@ func Menu() {
 			fmt.Println("Et pour info y'a rien dans l'inventaire gros nullos")
 			fmt.Println("1- Quitter")
 			fmt.Println("\n\n\n\n\n\n")
-			fmt.Scanln(&sousmenu)
+			fmt.Scanln(&buff1)
 			break
 
 		case 4:
 			logo.Logoontop()
-			fmt.Println("Fait par :")
-			fmt.Println("1- Oscar V")
-			fmt.Println("2- Florent F")
-			fmt.Println("3- Enzo D-R")
-			fmt.Println("Appuyer sur une touche pour continuer")
+			fmt.Println("\033[1mFait par :\033[0m")
+			fmt.Println("- Oscar V")
+			fmt.Println("- Florent F")
+			fmt.Println("- Enzo D-R")
+			fmt.Println("1- Quitter")
 			fmt.Println("\n\n\n\n")
-			fmt.Scanln(&sousmenu)
+			fmt.Scanln(&buff1)
 		case 5:
 			logo.Clear()
 			return // fermer prg
 		}
 	}
 }
+
+/*
+fmt.Println("=== Styles de texte ===")
+fmt.Println("\033[0mTexte normal\033[0m")
+fmt.Println("\033[3mTexte en italique\033[0m")
+fmt.Println("\033[1mTexte en gras\033[0m")
+fmt.Println("\033[4mTexte souligné\033[0m")
+
+fmt.Println("\n=== Couleurs ===")
+fmt.Println("\033[31mTexte rouge\033[0m")
+fmt.Println("\033[32mTexte vert\033[0m")
+fmt.Println("\033[33mTexte jaune\033[0m")
+fmt.Println("\033[34mTexte bleu\033[0m")
+fmt.Println("\033[35mTexte magenta\033[0m")
+fmt.Println("\033[36mTexte cyan\033[0m")
+
+fmt.Println("\n=== Combinaisons ===")
+fmt.Println("\033[1;31mTexte gras + rouge\033[0m")
+fmt.Println("\033[3;34mTexte italique + bleu\033[0m")
+fmt.Println("\033[4;32mTexte souligné + vert\033[0m")
+*/
