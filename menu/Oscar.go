@@ -15,7 +15,7 @@ var buff1 string
 func Lore() {
 	logo.Logoontop()
 	fmt.Println("-----------------------------------------------------")
-	fmt.Println("Dans une école mystérieuse, réputée pour former")
+	fmt.Println("Dans l'école Xnov, réputée pour former")
 	fmt.Println("les plus grands esprits du numérique, chaque élève")
 	fmt.Println("n’est pas simplement là pour apprendre.")
 	fmt.Println()
@@ -27,7 +27,7 @@ func Lore() {
 	fmt.Scanln(&buff1)
 	logo.Logoontop()
 	fmt.Println("-----------------------------------------------------")
-	fmt.Println("Les professeurs, appelés Mentores, ne sont pas de")
+	fmt.Println("Les professeurs, appelés Mentors, ne sont pas de")
 	fmt.Println("simples guides : ce sont des gardiens d’un secret")
 	fmt.Println("ancestral. Ils détiennent le savoir, mais aussi le")
 	fmt.Println("pouvoir de l’empêcher de se transmettre.")
@@ -99,10 +99,10 @@ func Lore2() {
 	fmt.Scanln(&buff1)
 }
 func Menu() {
-	for true {
+	for {
 		logo.Logoontop()
 		fmt.Println("\033[1mBienvenue sur Xtrack :\033[0m") // deroulement du menu
-		fmt.Println("\033[3mPetit conseil, restez en CapsLock durant le jeu :3\033[0m")
+		fmt.Println("\033[3mPetit conseil, restez en CapsLock (ver Maj) durant le jeu :3\033[0m")
 		fmt.Println("\033[1mChoisissez un des menus ci dessous :\033[0m")
 		fmt.Println("1- Jouons !")
 		fmt.Println("2- Paramètres")
@@ -131,7 +131,7 @@ func Menu() {
 			}
 		case 2: // ouverture des parametres
 			logo.Logoontop()
-			fmt.Println("\033[1mParametres :\033[0m")
+			fmt.Println("\033[1mParamètres :\033[0m")
 			fmt.Println("1- Langues")
 			fmt.Println("2- Quitter")
 			fmt.Println("\n\n\n\n\n\n")
@@ -151,7 +151,7 @@ func Menu() {
 			logo.Logoontop() // ouvrir l'inventaire
 			fmt.Println("Pourquoi tu veux voir l'inventaire, t'as même pas commencer le jeu, 0/20")
 			fmt.Println("Et pour info y'a rien dans l'inventaire gros nullos")
-			fmt.Println("1- Quitter")
+			fmt.Println("1- Continuer")
 			fmt.Println("\n\n\n\n\n\n")
 			fmt.Scanln(&buff1)
 			break
@@ -162,7 +162,7 @@ func Menu() {
 			fmt.Println("- Oscar V")
 			fmt.Println("- Florent F")
 			fmt.Println("- Enzo D-R")
-			fmt.Println("1- Quitter")
+			fmt.Println("1- Continuer")
 			fmt.Println("\n\n\n\n")
 			fmt.Scanln(&buff1)
 		case 5:
