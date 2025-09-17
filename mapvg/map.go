@@ -88,17 +88,17 @@ func Mapmobile() {
 	var piecen2 bool
 	var piecen3 bool
 
-	// var colonne [5]int // création de la map
-	// var ligne [5]int
 	i := 2 // hauter
 	j := 0 // largeur
+	hauteur_max := 5
+	largeur_max := 5
 	for {
 		logo.Logoontop()
 		fmt.Printf("Vous vous trouvez actuellement à la case '%d' (hauteur) ; '%d' (largeur)\nQuelle action voulez-vous faire :\n", i, j)
-		if i == 5 {
+		if i == hauteur_max {
 			fmt.Println("Vous ne pouvez pas aller en haut, vous êtes au max de la hauteur")
 		}
-		if j == 5 {
+		if j == largeur_max {
 			fmt.Println("Vous ne pouvez pas aller à droite, vous êtes au max de la largeur")
 		}
 		if i == 0 {
@@ -110,13 +110,13 @@ func Mapmobile() {
 		if i > 0 {
 			fmt.Println("\033[33mS- Aller en bas\033[0m")
 		}
-		if i < 5 {
+		if i < hauteur_max {
 			fmt.Println("\033[33mZ- Aller en haut\033[0m")
 		}
 		if j > 0 {
 			fmt.Println("\033[33mQ- Aller à gauche\033[0m")
 		}
-		if j < 5 {
+		if j < largeur_max {
 			fmt.Println("\033[33mD- Aller à droite\033[0m")
 		}
 		fmt.Println("\033[33mI- Iventaire\033[0m")
@@ -124,7 +124,7 @@ func Mapmobile() {
 		fmt.Scanln(&choix)
 		switch choix {
 		case "Z":
-			if i == 5 {
+			if i == hauteur_max {
 				logo.Logoontop()
 				fmt.Println("Je ne sais pas si vous avez lu les lignes qui étaient là avant mais vous ne pouvez pas faire ça")
 				fmt.Println("Etes-vous idiot ?")
@@ -147,7 +147,7 @@ func Mapmobile() {
 			}
 
 		case "D":
-			if j == 5 {
+			if j == largeur_max {
 				logo.Logoontop()
 				fmt.Println("Je ne sais pas si vous avez lu les lignes qui étaient là avant mais vous ne pouvez pas faire ça")
 				fmt.Println("Etes-vous idiot ?")
