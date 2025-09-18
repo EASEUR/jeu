@@ -2,6 +2,7 @@ package CombatGobelin
 
 import (
 	"fmt"
+	"jeu/inventaire"
 	"jeu/logo"
 	"jeu/test"
 )
@@ -24,6 +25,7 @@ func InitCombatGobelin() Gobelin {
 
 func CombatInteractif() {
 	var buff string
+	n := inventaire.Inv
 	c := test.Player
 	if c == nil {
 		fmt.Println("Erreur : aucun personnage trouvé. Créez un personnage avant de lancer le combat.")
@@ -55,29 +57,39 @@ func CombatInteractif() {
 			fmt.Scanln(&buff)
 
 		case 2:
-			// 	if len(c.Inventory) > 0 {
-			// 		fmt.Println("Inventaire :")
-			// 		for i, item := range c.Inventory {
-			// 			fmt.Printf("%d. %s\n", i+1, item)
-			// 		}
-			// 		fmt.Print("Choisissez un objet à utiliser : ")
-			// 		var itemChoice int
-			// 		fmt.Scanln(&itemChoice)
-			// 		if itemChoice >= 1 && itemChoice <= len(c.Inventory) {
-			// 			item := c.Inventory[itemChoice-1]
-			// 			fmt.Printf("%s utilise %s ! Effet : +20 PV\n", c.Name, item)
-			// 			c.HP += 20
-			// 			if c.HP > 120 {
-			// 				c.HP = 120
-			// 			}
-			// 		} else {
-			// 			fmt.Println("Choix invalide.")
-			// 		}
-			// 	} else {
-			// 		fmt.Println("Inventaire vide.")
-			// 	}
-			// default:
-			// 	fmt.Println("Action inconnue.")
+			if len(*n) > 0 { // On déréférence le pointeur pour avoir la map
+				fmt.Println("Inventaire :")
+				items := make([]string, 0, len(*n))
+				i := 1
+				for item := range *n {
+					fmt.Printf("%d. %s\n", i, item)
+					items = append(items, item)
+					i++
+				}
+
+				fmt.Print("Choisissez un objet à utiliser : ")
+				var itemChoice int
+				fmt.Scanln(&itemChoice)
+
+				if itemChoice >= 1 && itemChoice <= len(items) {
+					item := items[itemChoice-1]
+					fmt.Printf("%s utilise %s ! Effet : +20 PV\n", c.Name, item)
+					c.HP += 20
+					if c.HP > 120 {
+						c.HP = 120
+					}
+
+					// Retirer l'item de l'inventaire global
+					inventaire.RemoveInventory(*n, item, 1)
+				} else {
+					fmt.Println("Choix invalide.")
+				}
+			} else {
+				fmt.Println("Inventaire vide.")
+			}
+
+		default:
+			fmt.Println("Action inconnue.")
 		}
 
 		if gobelin.CurrentHealth <= 0 {

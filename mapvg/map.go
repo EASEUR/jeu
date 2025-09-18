@@ -10,7 +10,7 @@ import (
 )
 
 func Lore3() {
-	var buffer string
+	var buffer bool
 	logo.Logoontop()
 	fmt.Println("-----------------------------------------------------")
 	fmt.Println("Le silence retombe sur Xnov...")
