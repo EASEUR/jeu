@@ -89,6 +89,8 @@ func CharacterCreation() Character {
 
 	var buffer int
 	var name string
+	
+
 	for {
 		logo.Logoontop()
 		fmt.Print("Entrez le nom de votre personnage : ")
@@ -121,6 +123,8 @@ func CharacterCreation() Character {
 	}
 
 	character := Init(name, className)
+	Player = &character
+
 	logo.Logoontop()
 	fmt.Println("Personnage créé avec succès !")
 	fmt.Printf("\n--- Détails du personnage ---\n")
@@ -135,6 +139,7 @@ func CharacterCreation() Character {
 	fmt.Printf("XP           : %d/%d\n", character.Experience, character.NextLevelExp)
 	fmt.Println("1- Continuer")
 	fmt.Scanln(&buffer)
+	
 	return character
 }
 

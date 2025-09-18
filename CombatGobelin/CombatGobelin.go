@@ -21,9 +21,15 @@ func InitCombatGobelin() Gobelin {
 	}
 }
 
-// Func du combat entre le joueur et le monstre. Elle met en place un combat Tour par Tour avec des possbilités d'utiliser les compétences, les attaques basique etc
+// ... Gobelin struct et InitCombatGobelin() ici ...
+
 func CombatInteractif() {
 	c := test.Player
+	if c == nil {
+		fmt.Println("Erreur : aucun personnage trouvé. Créez un personnage avant de lancer le combat.")
+		return
+	}
+
 	gobelin := InitCombatGobelin()
 	fmt.Printf("\n🔥 Combat contre %s lancé !\n", gobelin.Name)
 
@@ -81,14 +87,12 @@ func CombatInteractif() {
 			fmt.Println("Action inconnue.")
 		}
 
-		// Affiche le nombre d'xp gagnée
 		if gobelin.CurrentHealth <= 0 {
 			fmt.Printf("%s est vaincu ! 🎉\n", gobelin.Name)
 			xpGain := 50
 			c.Experience += xpGain
 			fmt.Printf("%s gagne %d XP !\n", c.Name, xpGain)
 
-			// ⬆️ Vérification de montée de niveau : affiche le niveau actuel et lorsque le joueur gagne ou monte de niveau, stats...
 			for c.Experience >= c.NextLevelExp {
 				c.Level++
 				c.Experience -= c.NextLevelExp
@@ -96,7 +100,6 @@ func CombatInteractif() {
 				c.HP += 20
 				c.Power += 10
 				fmt.Printf("⬆️ %s monte au niveau %d !\n", c.Name, c.Level)
-				fmt.Printf("💪 PV augmentés à %d, Puissance à %d\n", c.HP, c.Power)
 			}
 			break
 		}
