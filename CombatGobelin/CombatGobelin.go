@@ -7,6 +7,8 @@ import (
 	"jeu/test"
 )
 
+var n = inventaire.Inv
+
 // Structure du Gobelin
 type Gobelin struct {
 	Name          string
@@ -25,7 +27,6 @@ func InitCombatGobelin() Gobelin {
 
 func CombatInteractif() {
 	var buff string
-	n := inventaire.Inv
 	c := test.Player
 	if c == nil {
 		fmt.Println("Erreur : aucun personnage trouvé. Créez un personnage avant de lancer le combat.")
