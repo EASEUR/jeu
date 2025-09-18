@@ -2,38 +2,105 @@ package mapvg
 
 import (
 	"fmt"
+	"jeu/CombatGobelin"
 	"jeu/inventaire"
 	"jeu/logo"
 	"math/rand"
 	"time"
-	"jeu/CombatGobelin"
 )
 
-func creapc() bool {
-	var saisis int
+func Lore3() {
+	var buffer string
 	logo.Logoontop()
-	fmt.Println("\033[1mVous êtes arrivé dans le labo, un homme vous parle :\033[0m")
-	fmt.Println("\033[3mQue me voulez vous ?\033[0m")
-	fmt.Println("1- Construire le PC")
-	fmt.Println("2- Partir en courant")
-	fmt.Println("\n\n\n\n\n\n\n\n")
-	fmt.Scanln(&saisis)
-	if saisis == 1 {
-		logo.Logoontop()
-		fmt.Println("\033[3mAvez vous récuperé les 3 pièces du PC à obtenir ?\033[0m")
-		fmt.Println("1- Oui")
-		fmt.Println("\n\n\n\n\n\n\n\n\n\n")
-		fmt.Scanln(&saisis)
-		logo.Logoontop()
-		fmt.Println("\033[3mVoici le PC monté et prêt à être utilisé\nBonne chance pour la suite des épreuves !\033[0m")
-		fmt.Println("1- Continuez")
-		fmt.Println("\n\n\n\n\n\n\n\n\n\n")
-		fmt.Scanln(&saisis)
+	fmt.Println("-----------------------------------------------------")
+	fmt.Println("Le silence retombe sur Xnov...")
+	fmt.Println("Les échos de ton dernier combat résonnent encore,")
+	fmt.Println("mais déjà l’atmosphère change.")
+	fmt.Println("-----------------------------------------------------")
+	fmt.Println("1- Continuer")
+	fmt.Println("\n\n\n\n")
+	fmt.Scanln(&buffer)
 
-		return true
-	} else {
-		return false
+	logo.Logoontop()
+	fmt.Println("-----------------------------------------------------")
+	fmt.Println("Ton PC assemblé. Ton Mentor vaincu.")
+	fmt.Println("Tu as franchi la frontière invisible :")
+	fmt.Println("l’élève n’existe plus, le guide apparaît.")
+	fmt.Println("-----------------------------------------------------")
+	fmt.Println("1- Continuer")
+	fmt.Println("\n\n\n\n")
+	fmt.Scanln(&buffer)
+
+	logo.Logoontop()
+	fmt.Println("-----------------------------------------------------")
+	fmt.Println("Ici, ton voyage s’arrête.")
+	fmt.Println("Non pas parce que tu échoues...")
+	fmt.Println("...mais parce que tu transmets.")
+	fmt.Println("-----------------------------------------------------")
+	fmt.Println("1- Continuer")
+	fmt.Println("\n\n\n\n")
+	fmt.Scanln(&buffer)
+
+	logo.Logoontop()
+	fmt.Println("-----------------------------------------------------")
+	fmt.Println("Tu ne quitteras jamais ces murs.")
+	fmt.Println("Tu resteras, dans l’ombre, en silence,")
+	fmt.Println("jusqu’à ce qu’un nouvel élève arrive...")
+	fmt.Println("Et alors, tu deviendras son épreuve.")
+	fmt.Println("-----------------------------------------------------")
+	fmt.Println("1- Continuer")
+	fmt.Println("\n\n\n")
+	fmt.Scanln(&buffer)
+
+	logo.Logoontop()
+	fmt.Println("-----------------------------------------------------")
+	fmt.Println("Ainsi commence ta nouvelle vie :")
+	fmt.Println("TU ES DEVENU MENTOR.")
+	fmt.Println("-----------------------------------------------------")
+	fmt.Println("1- Fin")
+	fmt.Println("\n\n\n\n\n")
+	fmt.Scanln(&buffer)
+}
+func indice() {
+	var buff string
+
+	logo.Logoontop()
+	fmt.Println("\033[1mVous êtes tombé sur un indice....\033[0m")
+	fmt.Println("\033[3mJ’étais ton obstacle, je fus ta victoire.\nC’est là que tu as prouvé ta mémoire.\nLe PC complet, ta quête s’éclaire,\nRetourne donc là où tu as vaincu ton adversaire. \033[0m")
+	fmt.Println("1- Conrinuer")
+	fmt.Println("\n\n\n\n")
+	fmt.Scanln(&buff)
+
+}
+func creapc(pc bool) bool {
+	var saisis int
+	if pc != true {
+
+		logo.Logoontop()
+		fmt.Println("\033[1mVous êtes arrivé dans le labo, un homme vous parle :\033[0m")
+		fmt.Println("\033[3mQue me voulez vous ?\033[0m")
+		fmt.Println("1- Construire le PC")
+		fmt.Println("2- Partir en courant")
+		fmt.Println("\n\n\n\n\n\n\n\n")
+		fmt.Scanln(&saisis)
+		if saisis == 1 {
+			logo.Logoontop()
+			fmt.Println("\033[3mAvez vous récuperé les 3 pièces du PC à obtenir ?\033[0m")
+			fmt.Println("1- Oui")
+			fmt.Println("\n\n\n\n\n\n\n\n\n\n")
+			fmt.Scanln(&saisis)
+			logo.Logoontop()
+			fmt.Println("\033[3mVoici le PC monté et prêt à être utilisé\nBonne chance pour la suite des épreuves !\033[0m")
+			fmt.Println("1- Continuez")
+			fmt.Println("\n\n\n\n\n\n\n\n\n\n")
+			fmt.Scanln(&saisis)
+
+			return true
+		} else {
+			return false
+		}
 	}
+	return true
 }
 
 func eprv1() bool {
@@ -117,7 +184,7 @@ func piece3() bool {
 	fmt.Println("1- Continuez")
 	fmt.Println("\n\n\n\n\n\n\n\n")
 	fmt.Scanln(&buff)
-	
+
 	return true
 }
 
@@ -243,17 +310,27 @@ func Mapmobile() {
 			obtp3 = true
 		}
 
+		if i == 8 && j == 2 {
+			indice()
+		}
 		if i == 0 && j == 0 && !piecen1 {
 			piecen1 = piece1()
 			obtp1 = true
 		}
-		if i == 4 && j == 6 && !piecen2 {
+		if i == 3 && j == 7 && !piecen2 {
 			piecen2 = piece2()
 			obtp2 = true
 		}
-		if i == 9 && j == 9 && !piecen3 {
-			piecen3 = piece3()
-			obtp3 = true
+		if i == 9 && j == 9 {
+			if obtpc {
+				Lore3()
+				return
+			}
+			if obtp3 != true {
+				piecen3 = piece3()
+				obtp3 = true
+			}
+
 		}
 		if piecen1 && piecen2 && piecen3 {
 			if !lore {
@@ -266,8 +343,7 @@ func Mapmobile() {
 				lore = true
 			}
 			if i == 1 && j == 1 && lore {
-				obtpc = creapc()
-
+				obtpc = creapc(obtpc)
 			}
 		}
 		if obtpc {

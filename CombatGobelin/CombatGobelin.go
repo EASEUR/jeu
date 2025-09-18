@@ -21,7 +21,6 @@ func InitCombatGobelin() Gobelin {
 		AttackPoints:  15,
 	}
 }
-
 // ... Gobelin struct et InitCombatGobelin() ici ...
 
 func CombatInteractif() {
