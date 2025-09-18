@@ -5,6 +5,7 @@ import (
 	"jeu/inventaire"
 	"jeu/logo"
 	"jeu/test"
+	"os"
 )
 
 var n = inventaire.Inv
@@ -134,9 +135,11 @@ func CombatInteractif() {
 		if c.HP == 0 {
 			logo.Logoontop()
 			fmt.Printf("%s est vaincu... 💀\n", c.Name)
-			fmt.Println("Bravo ! \n1- Continuez")
+			fmt.Println("1- Continuez")
 			fmt.Println("\n\n\n\n\n\n\n")
 			fmt.Scanln(&buff)
+			logo.Clear()
+			os.Exit(0)
 
 			break
 		}
