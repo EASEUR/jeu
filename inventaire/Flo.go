@@ -131,6 +131,7 @@ func TalkToMerchant() {
 			if len(inv) == 0 {
 				logo.Logoontop()
 				fmt.Println("Votre inventaire est vide, rien à vendre.")
+				fmt.Println("1- Continuer")
 				fmt.Println("\n\n\n\n\n\n\n\n\n")
 				fmt.Scanln(&buff)
 				continue
