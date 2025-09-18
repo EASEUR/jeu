@@ -16,12 +16,11 @@ type Gobelin struct {
 // Initialisation du Gobelin
 func InitCombatGobelin() Gobelin {
 	return Gobelin{
-		Name:          "Zero.exe",
+		Name:          "Erwan <3",
 		CurrentHealth: 100,
 		AttackPoints:  15,
 	}
 }
-// ... Gobelin struct et InitCombatGobelin() ici ...
 
 func CombatInteractif() {
 	var buff string

@@ -3,6 +3,7 @@ package inventaire
 import (
 	"fmt"
 	"jeu/logo"
+	"jeu/test"
 )
 
 const MaxInventory = 10
@@ -90,6 +91,7 @@ func removeInventory(inv Inventory, item string, qty int) {
 
 // Parler au Marchand
 func TalkToMerchant() {
+	c := test.Player
 	var buff string
 	for {
 		logo.Logoontop()
@@ -105,17 +107,25 @@ func TalkToMerchant() {
 		switch choice {
 		case 1:
 			logo.Logoontop()
-			// Ajouter un item + rappel place dispo inventaire
-			if addInventory(inv, "Potion de vie", 1) {
-				fmt.Println("Vous avez obtenu : \033[31mPotion de vie\033[0m")
+			if c.CryptoCoins < 20 {
+				fmt.Println("Vous ne pouvez acheter de \033[31mPotion de vie\033[0m")
+				fmt.Println("1- Continuer")
+				fmt.Println("\n\n\n\n\n\n\n\n")
+				fmt.Scanln(&buff)
 			} else {
-				fmt.Println("Inventaire plein ! Vous ne pouvez rien acheter.")
+				// Ajouter un item + rappel place dispo inventaire
+				if addInventory(inv, "Potion de vie", 1) {
+					fmt.Println("Vous avez obtenu : \033[31mPotion de vie\033[0m")
+					c.CryptoCoins -= 20
+					fmt.Printf("Vous avez maintenant %d CryptoCoins\n", c.CryptoCoins)
+				} else {
+					fmt.Println("Inventaire plein ! Vous ne pouvez rien acheter.")
+				}
+				fmt.Printf("Place de l’inventaire : %d/%d\n", CountItems(inv), MaxInventory)
+				fmt.Println("1- Continuer")
+				fmt.Println("\n\n\n\n\n\n\n")
+				fmt.Scanln(&buff)
 			}
-			fmt.Printf("Place de l’inventaire : %d/%d\n", CountItems(inv), MaxInventory)
-			fmt.Println("1- Continuer")
-			fmt.Println("\n\n\n\n\n\n\n")
-			fmt.Scanln(&buff)
-
 		case 2:
 			// Retirer un item (avec inventaire vide)
 			if len(inv) == 0 {
@@ -132,20 +142,22 @@ func TalkToMerchant() {
 			items := make([]string, 0, len(inv))
 			i := 1
 			for item := range inv {
-				fmt.Printf("%d. %s (x%d)\n", i, item, inv[item])
+				fmt.Printf("%d- %s (x%d)\n", i, item, inv[item])
 				items = append(items, item)
 				i++
 			}
+			fmt.Println("2- Continuer")
 			fmt.Println("\n\n\n\n\n\n\n\n\n")
 
 			var idx int
 			fmt.Scanln(&idx)
 			logo.Logoontop()
 
-			if idx > 0 && idx <= len(items) {
+			if idx == 0 {
 				removeInventory(inv, items[idx-1], 1)
 				fmt.Printf("Vous avez retiré : %s\n", items[idx-1])
-			} else {
+			}
+			if idx > 1 && idx < 0 {
 				fmt.Println("Choix invalide.")
 			}
 			fmt.Printf("Place de l’inventaire : %d/%d\n", CountItems(inv), MaxInventory)
