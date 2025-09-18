@@ -112,7 +112,7 @@ func TalkToMerchant() {
 				fmt.Println("Inventaire plein ! Vous ne pouvez rien acheter.")
 			}
 			fmt.Printf("Place de l’inventaire : %d/%d\n", CountItems(inv), MaxInventory)
-			fmt.Println("1- Continuez")
+			fmt.Println("1- Continuer")
 			fmt.Println("\n\n\n\n\n\n\n")
 			fmt.Scanln(&buff)
 
@@ -149,13 +149,13 @@ func TalkToMerchant() {
 				fmt.Println("Choix invalide.")
 			}
 			fmt.Printf("Place de l’inventaire : %d/%d\n", CountItems(inv), MaxInventory)
-			fmt.Println("1- Continuez")
+			fmt.Println("1- Continuer")
 			fmt.Println("\n\n\n\n\n\n\n")
 			fmt.Scanln(&buff)
 		case 3:
 			logo.Logoontop()
 			fmt.Println("À bientôt !")
-			fmt.Println("1- Continuez")
+			fmt.Println("1- Continuer")
 			fmt.Println("\n\n\n\n\n\n\n\n")
 			fmt.Scanln(&buff)
 			return

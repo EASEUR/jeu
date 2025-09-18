@@ -67,7 +67,7 @@ func indice() {
 	logo.Logoontop()
 	fmt.Println("\033[1mVous êtes tombé sur un indice....\033[0m")
 	fmt.Println("\033[3mJ’étais ton obstacle, je fus ta victoire.\nC’est là que tu as prouvé ta mémoire.\nLe PC complet, ta quête s’éclaire,\nRetourne donc là où tu as vaincu ton adversaire. \033[0m")
-	fmt.Println("1- Conrinuer")
+	fmt.Println("1- Continuer")
 	fmt.Println("\n\n\n\n")
 	fmt.Scanln(&buff)
 
