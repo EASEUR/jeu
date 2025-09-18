@@ -17,12 +17,9 @@ type Character struct {
 	HP           int
 	Power        int
 	CryptoCoins  int
-	Inventory    []string
-	Skills       []string
 	Experience   int
 	NextLevelExp int
 }
-
 
 // Cette func vérifie si les nom choisie contient suelement des lettres
 func isValidName(name string) bool {
@@ -43,7 +40,6 @@ func formatName(name string) string {
 // Initialise le personnage selon sa classe, ses compétences et son inventaire
 func Init(name, class string) Character {
 	var hp, power, cryptoCoins int
-	var inventory, skills []string
 
 	switch class {
 	case "Hacker":
@@ -66,8 +62,7 @@ func Init(name, class string) Character {
 		hp = 100
 		power = 50
 		cryptoCoins = 20
-		inventory = []string{}
-		skills = []string{}
+
 	}
 
 	return Character{
@@ -77,8 +72,6 @@ func Init(name, class string) Character {
 		HP:           hp,
 		Power:        power,
 		CryptoCoins:  cryptoCoins,
-		Inventory:    inventory,
-		Skills:       skills,
 		Experience:   0,
 		NextLevelExp: 100,
 	}
@@ -89,7 +82,6 @@ func CharacterCreation() Character {
 
 	var buffer int
 	var name string
-	
 
 	for {
 		logo.Logoontop()
@@ -134,12 +126,10 @@ func CharacterCreation() Character {
 	fmt.Printf("HP           : %d\n", character.HP)
 	fmt.Printf("Puissance    : %d\n", character.Power)
 	fmt.Printf("CryptoCoins  : %d\n", character.CryptoCoins)
-	fmt.Printf("Inventaire   : %v\n", character.Inventory)
-	fmt.Printf("Compétences  : %v\n", character.Skills)
 	fmt.Printf("XP           : %d/%d\n", character.Experience, character.NextLevelExp)
 	fmt.Println("1- Continuer")
 	fmt.Scanln(&buffer)
-	
+
 	return character
 }
 
@@ -180,43 +170,3 @@ func GetMarchandItems(class string) map[string]int {
 }
 
 // Cette func permet d'intéragir avec le marchand et d'acheter les items
-func MarchandInteraction(c *Character) {
-	items := GetMarchandItems(c.Class)
-
-	fmt.Println("\n--- Marchand Cyberpunk ---")
-	fmt.Printf("Objets disponibles pour la classe %s :\n", c.Class)
-	i := 1
-	itemList := []string{}
-	for item, price := range items {
-		fmt.Printf("%d. %s (%d pièces d’or)\n", i, item, price)
-		itemList = append(itemList, item)
-		i++
-	}
-
-	fmt.Print("Entrez le numéro de l’objet à acheter (0 pour quitter) : ")
-	var choice int
-	fmt.Scanln(&choice)
-
-	if choice == 0 {
-		fmt.Println("Vous quittez le marchand.")
-		return
-	}
-
-	if choice < 1 || choice > len(itemList) {
-		fmt.Println("Choix invalide.")
-		return
-	}
-
-	selectedItem := itemList[choice-1]
-	cost := items[selectedItem]
-
-	if c.CryptoCoins < cost {
-		fmt.Printf("Pas assez de pièces d’or pour %s.\n", selectedItem)
-		return
-	}
-
-	c.CryptoCoins -= cost
-	c.Inventory = append(c.Inventory, selectedItem)
-	fmt.Printf("Achat réussi : %s ajouté à l’inventaire.\n", selectedItem)
-	fmt.Printf("CryptoCoins restants : %d\n", c.CryptoCoins)
-}

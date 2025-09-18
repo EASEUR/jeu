@@ -2,6 +2,7 @@ package CombatGobelin
 
 import (
 	"fmt"
+	"jeu/logo"
 	"jeu/test"
 )
 
@@ -24,6 +25,7 @@ func InitCombatGobelin() Gobelin {
 // ... Gobelin struct et InitCombatGobelin() ici ...
 
 func CombatInteractif() {
+	var buff string
 	c := test.Player
 	if c == nil {
 		fmt.Println("Erreur : aucun personnage trouvé. Créez un personnage avant de lancer le combat.")
@@ -31,63 +33,57 @@ func CombatInteractif() {
 	}
 
 	gobelin := InitCombatGobelin()
-	fmt.Printf("\n🔥 Combat contre %s lancé !\n", gobelin.Name)
+	logo.Logoontop()
+	fmt.Printf("\033[1m🔥 Combat contre %s lancé !\n\033[0m", gobelin.Name)
+	fmt.Println("1- Continuez")
+	fmt.Println("\n\n\n\n\n\n\n\n")
+	fmt.Scanln(&buff)
 
 	for c.HP > 0 && gobelin.CurrentHealth > 0 {
+		logo.Logoontop()
 		fmt.Printf("\n--- Tour du joueur ---\n")
-		fmt.Printf("1. Attaquer\n2. Utiliser une compétence\n3. Utiliser un objet\nChoix : ")
+		fmt.Printf("1. Attaquer\n2. Utiliser un objet\nChoix : ")
+		fmt.Println("\n\n\n\n\n\n\n\n")
 		var choix int
 		fmt.Scanln(&choix)
 
 		switch choix {
 		case 1:
 			gobelin.CurrentHealth -= c.Power
+			logo.Logoontop()
 			fmt.Printf("%s attaque %s et inflige %d dégâts !\n", c.Name, gobelin.Name, c.Power)
+			fmt.Println("1- Continuez")
+			fmt.Println("\n\n\n\n\n\n\n\n")
+			fmt.Scanln(&buff)
+
 		case 2:
-			if len(c.Skills) > 0 {
-				fmt.Println("Compétences disponibles :")
-				for i, skill := range c.Skills {
-					fmt.Printf("%d. %s\n", i+1, skill)
-				}
-				fmt.Print("Choisissez une compétence : ")
-				var skillChoice int
-				fmt.Scanln(&skillChoice)
-				if skillChoice >= 1 && skillChoice <= len(c.Skills) {
-					fmt.Printf("%s utilise %s ! Effet : +10 dégâts\n", c.Name, c.Skills[skillChoice-1])
-					gobelin.CurrentHealth -= c.Power + 10
-				} else {
-					fmt.Println("Choix invalide.")
-				}
-			} else {
-				fmt.Println("Aucune compétence disponible.")
-			}
-		case 3:
-			if len(c.Inventory) > 0 {
-				fmt.Println("Inventaire :")
-				for i, item := range c.Inventory {
-					fmt.Printf("%d. %s\n", i+1, item)
-				}
-				fmt.Print("Choisissez un objet à utiliser : ")
-				var itemChoice int
-				fmt.Scanln(&itemChoice)
-				if itemChoice >= 1 && itemChoice <= len(c.Inventory) {
-					item := c.Inventory[itemChoice-1]
-					fmt.Printf("%s utilise %s ! Effet : +20 PV\n", c.Name, item)
-					c.HP += 20
-					if c.HP > 120 {
-						c.HP = 120
-					}
-				} else {
-					fmt.Println("Choix invalide.")
-				}
-			} else {
-				fmt.Println("Inventaire vide.")
-			}
-		default:
-			fmt.Println("Action inconnue.")
+			// 	if len(c.Inventory) > 0 {
+			// 		fmt.Println("Inventaire :")
+			// 		for i, item := range c.Inventory {
+			// 			fmt.Printf("%d. %s\n", i+1, item)
+			// 		}
+			// 		fmt.Print("Choisissez un objet à utiliser : ")
+			// 		var itemChoice int
+			// 		fmt.Scanln(&itemChoice)
+			// 		if itemChoice >= 1 && itemChoice <= len(c.Inventory) {
+			// 			item := c.Inventory[itemChoice-1]
+			// 			fmt.Printf("%s utilise %s ! Effet : +20 PV\n", c.Name, item)
+			// 			c.HP += 20
+			// 			if c.HP > 120 {
+			// 				c.HP = 120
+			// 			}
+			// 		} else {
+			// 			fmt.Println("Choix invalide.")
+			// 		}
+			// 	} else {
+			// 		fmt.Println("Inventaire vide.")
+			// 	}
+			// default:
+			// 	fmt.Println("Action inconnue.")
 		}
 
 		if gobelin.CurrentHealth <= 0 {
+			logo.Logoontop()
 			fmt.Printf("%s est vaincu ! 🎉\n", gobelin.Name)
 			xpGain := 50
 			c.Experience += xpGain
@@ -101,9 +97,13 @@ func CombatInteractif() {
 				c.Power += 10
 				fmt.Printf("⬆️ %s monte au niveau %d !\n", c.Name, c.Level)
 			}
-			break
-		}
+			fmt.Println("1- Continuez")
+			fmt.Println("\n\n\n\n\n\n")
+			fmt.Scanln(&buff)
 
+			return
+		}
+		logo.Logoontop()
 		fmt.Printf("\n--- Tour du Gobelin ---\n")
 		damage := gobelin.AttackPoints
 		if gobelin.CurrentHealth < 30 {
@@ -116,9 +116,17 @@ func CombatInteractif() {
 		}
 		fmt.Printf("%s inflige %d dégâts à %s\n", gobelin.Name, damage, c.Name)
 		fmt.Printf("PV restants : %d\n", c.HP)
+		fmt.Println("1- Continuez")
+		fmt.Println("\n\n\n\n\n\n\n")
+		fmt.Scanln(&buff)
 
 		if c.HP == 0 {
+			logo.Logoontop()
 			fmt.Printf("%s est vaincu... 💀\n", c.Name)
+			fmt.Println("Bravo ! \n1- Continuez")
+			fmt.Println("\n\n\n\n\n\n\n")
+			fmt.Scanln(&buff)
+
 			break
 		}
 	}
