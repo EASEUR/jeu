@@ -5,14 +5,13 @@ import (
 	"jeu/logo"
 )
 
-var Inv *Inventory
+var Inv *Inventory = &inv
 
 const MaxInventory = 10
 
 type Inventory map[string]int
 
 var inv Inventory = make(map[string]int)
-var Inv *Inventory = &inv // <- ça initialise le pointeur
 
 // Fonction pour compter le nombre d'items dans l'inventaire (10max)
 func CountItems(inv Inventory) int {

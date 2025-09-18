@@ -20,10 +20,10 @@ type Player struct {
 // Cette func initialise le Gobelin
 func InitGobelin() *Monster {
 	return &Monster{
-		Name:          "Zero.exe",
-		MaxHealth:     100,
+		Name:          "Erwann Kervoelen",
+		MaxHealth:     300,
 		CurrentHealth: 100,
-		AttackPoints:  15,
+		AttackPoints:  25,
 	}
 }
 

@@ -19,9 +19,9 @@ type Gobelin struct {
 // Initialisation du Gobelin
 func InitCombatGobelin() Gobelin {
 	return Gobelin{
-		Name:          "Erwan <3",
-		CurrentHealth: 100,
-		AttackPoints:  15,
+		Name:          "Erwann Kervoelen",
+		CurrentHealth: 300,
+		AttackPoints:  25,
 	}
 }
 
